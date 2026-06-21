@@ -1,0 +1,296 @@
+{
+  "item": [
+    {
+      "id": "b1a4f0c2-1d2e-4a3b-9c4d-5e6f70819a2b",
+      "name": "Rates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c2b5e1d3-2e3f-4b4c-ad5e-6f7081920b3c",
+          "name": "Get negotiated rates for a procedure code",
+          "request": {
+            "name": "Get negotiated rates for a procedure code",
+            "description": {
+              "content": "Returns payer-negotiated reimbursement rates for a single procedure code (CPT/DRG), optionally filtered by region, tier, site of service, and payer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "rates",
+                "code",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "region",
+                  "value": "PA"
+                },
+                {
+                  "key": "tier",
+                  "value": "professional"
+                },
+                {
+                  "key": "site",
+                  "value": "nonfac"
+                },
+                {
+                  "key": "payer",
+                  "value": "bcbs"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "code",
+                  "value": "27445",
+                  "description": "The procedure code (CPT or DRG) to look up."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3c6f2e4-3f40-4c5d-be6f-708192031c4d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rates",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "PA"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "code",
+                      "value": "27445"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET"
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"27445\",\n  \"count\": 3178,\n  \"rates\": [\n    {\n      \"npi_count\": 3509,\n      \"ein_count\": 2,\n      \"payer\": \"Cigna\",\n      \"rate\": 1621\n    },\n    {\n      \"npi_count\": 2,\n      \"ein_count\": 2,\n      \"payer\": \"UHC\",\n      \"rate\": 1412\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e4d7031e-4051-4d6e-af70-819203142d5e",
+      "name": "Distributions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f5e814207152-4e7f-b081-920314253e6f",
+          "name": "Get rate distribution for a procedure code",
+          "request": {
+            "name": "Get rate distribution for a procedure code",
+            "description": {
+              "content": "Returns the percentile distribution (5th-95th) of negotiated rates for a single procedure code, filtered by region, tier, site of service, payer, and weighting method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "distributions",
+                "code",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "region",
+                  "value": "TX"
+                },
+                {
+                  "key": "tier",
+                  "value": "professional"
+                },
+                {
+                  "key": "site",
+                  "value": "nonfac"
+                },
+                {
+                  "key": "payer",
+                  "value": "bcbs"
+                },
+                {
+                  "key": "weighting",
+                  "value": "ein"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "code",
+                  "value": "90837",
+                  "description": "The procedure code (CPT or DRG) to look up."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "061925318263-4f80-c192-031425364f70",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "distributions",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "TX"
+                    },
+                    {
+                      "key": "weighting",
+                      "value": "ein"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "key": "code",
+                      "value": "90837"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET"
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"90837\",\n  \"npi_count\": 1128940,\n  \"ein_count\": 270301,\n  \"weighting\": \"ein\",\n  \"distribution\": {\n    \"5th\": 92.04,\n    \"10th\": 92.04,\n    \"25th\": 103.06,\n    \"50th\": 126.69,\n    \"75th\": 133.86,\n    \"90th\": 162.07,\n    \"95th\": 179.27\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pricing-api.serifhealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7a2c9e44-3b51-4d62-9f10-2c3d4e5f6a7b",
+    "name": "Serif Health Pricing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Serif Health's normalized healthcare price-transparency data: negotiated rates and percentile rate distributions by procedure code.\n\nContact Support:\n Name: Serif Health\n Email: hello@serifhealth.com",
+      "type": "text/plain"
+    }
+  }
+}

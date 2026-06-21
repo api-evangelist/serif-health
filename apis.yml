@@ -1,0 +1,148 @@
+aid: serif-health
+url: https://raw.githubusercontent.com/api-evangelist/serif-health/refs/heads/main/apis.yml
+name: Serif Health
+kind: company
+description: Serif Health turns federal hospital and payer price-transparency disclosures
+  (machine-readable files) into normalized, decision-ready negotiated-rate data. Its
+  REST APIs let teams query negotiated reimbursement rates and rate distributions by
+  CPT/DRG code, payer, provider, and geography, search for in-network providers, and
+  pull custom datasets and extracts.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Healthcare
+- Price Transparency
+- Negotiated Rates
+- Payer
+- Data
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: serif-health:negotiated-rates-api
+  name: Serif Health Negotiated Rates API
+  tags:
+  - Negotiated Rates
+  - Pricing
+  - Price Transparency
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.serifhealth.com/platform/products/apis
+  baseURL: https://pricing-api.serifhealth.com
+  properties:
+  - url: https://docs.serifhealth.com
+    type: Documentation
+  - url: https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+    type: APIReference
+  - url: openapi/serif-health-openapi.yml
+    type: OpenAPI
+  - url: collections/serif-health.postman_collection.json
+    type: PostmanCollection
+  - url: collections/serif-health.opencollection.json
+    type: OpenCollection
+  description: Query payer-negotiated reimbursement rates for an individual procedure
+    code (CPT/DRG), filtered by region, tier, site of service, and payer. Returns
+    per-payer rates derived from machine-readable files (MRFs).
+- aid: serif-health:rate-search-api
+  name: Serif Health Rate Distributions API
+  tags:
+  - Rate Search
+  - Distributions
+  - Benchmarks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.serifhealth.com/platform/products/apis
+  baseURL: https://pricing-api.serifhealth.com
+  properties:
+  - url: https://docs.serifhealth.com
+    type: Documentation
+  - url: https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+    type: APIReference
+  - url: openapi/serif-health-openapi.yml
+    type: OpenAPI
+  - url: collections/serif-health.postman_collection.json
+    type: PostmanCollection
+  - url: collections/serif-health.opencollection.json
+    type: OpenCollection
+  description: Return percentile rate distributions (5th-95th) for a procedure code,
+    filtered by region, tier, site, payer, and weighting (NPI or EIN) for benchmarking
+    against the market.
+- aid: serif-health:find-care-api
+  name: Serif Health Find Care API
+  tags:
+  - Find Care
+  - Provider Search
+  - Care Navigation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.serifhealth.com/platform/products/apis
+  baseURL: https://pricing-api.serifhealth.com
+  properties:
+  - url: https://docs.serifhealth.com
+    type: Documentation
+  - url: https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency
+    type: Documentation
+  - url: openapi/serif-health-openapi.yml
+    type: OpenAPI
+  description: Find the right provider by procedure, geography, and payer network -
+    surfacing cost-aware, in-network provider options to power care-navigation tools.
+- aid: serif-health:provider-directory-api
+  name: Serif Health Provider Directory API
+  tags:
+  - Provider Directory
+  - Network Status
+  - NPI EIN Crosswalk
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.serifhealth.com/platform/products/apis
+  baseURL: https://pricing-api.serifhealth.com
+  properties:
+  - url: https://docs.serifhealth.com
+    type: Documentation
+  - url: openapi/serif-health-openapi.yml
+    type: OpenAPI
+  description: Determine in- vs out-of-network status across payers and perform NPI/EIN
+    relationship crosswalks to understand network structure and decode MRF postings.
+- aid: serif-health:datasets-extracts-api
+  name: Serif Health Datasets & Extracts
+  tags:
+  - Datasets
+  - Extracts
+  - Data Delivery
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.serifhealth.com/platform/products/data-delivery
+  baseURL: https://pricing-api.serifhealth.com
+  properties:
+  - url: https://www.serifhealth.com/platform/products/data-delivery
+    type: Documentation
+  description: Custom data pulls and extracts for specific EINs, NPIs, or taxonomy
+    codes, delivered in common formats and optionally indexed back into the API by
+    request.
+- aid: serif-health:payer-inventory-api
+  name: Serif Health Payer Inventory
+  tags:
+  - Payer Inventory
+  - Coverage
+  - Benchmarks
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
+  baseURL: https://www.serifhealth.com
+  properties:
+  - url: https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
+    type: Documentation
+  description: Live public inventory of 200+ payers with network-quality scoring,
+    updated monthly, exposing data coverage and freshness across payer machine-readable
+    files.
+common:
+- type: GitHubOrganization
+  url: https://github.com/serif-health
+- type: LinkedIn
+  url: https://www.linkedin.com/company/serif-health
+- type: Website
+  url: https://www.serifhealth.com
+- type: Documentation
+  url: https://docs.serifhealth.com
+- type: Plans
+  url: plans/serif-health-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/serif-health-rate-limits.yml
+- type: FinOps
+  url: finops/serif-health-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

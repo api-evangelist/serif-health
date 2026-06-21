@@ -1,0 +1,122 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Serif Health
+providerId: serif-health
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Healthcare
+- Price Transparency
+- Negotiated Rates
+- Payer
+- Data
+- Plans
+description: >-
+  Serif Health sells access to its price-transparency data products (API,
+  analytics portal, and custom data delivery) through a sales-led, subscription
+  model. Public pricing tiers are not published; test API keys are available on
+  request and production keys require a subscription. Pricing dimensions
+  referenced publicly include API query volume (scalable to millions of queries
+  per month) and the scope of data delivered (specific EINs, NPIs, taxonomy
+  codes, regions, and payers). Specific dollar amounts are not reconciled in
+  this artifact.
+notes: >-
+  Pricing is sales-led and not publicly listed; contact Serif Health
+  (hello@serifhealth.com) or book a demo to obtain current terms. Reconcile
+  plan dollar amounts and quotas directly with Serif Health.
+sources:
+- https://www.serifhealth.com/platform/products/apis
+- https://www.serifhealth.com/platform/products/data-delivery
+- https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+- https://www.ycombinator.com/companies/serif-health
+plans:
+- id: serif-health-trial
+  name: Trial / Evaluation
+  type: trial
+  description: >-
+    Test API keys available on request for evaluation against the documented
+    rates and distributions endpoints.
+  entries:
+  - label: Evaluation Access
+    name: trial_access
+    type: trial
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Negotiated Rates API
+  - name: Rate Distributions API
+- id: serif-health-api-subscription
+  name: API Subscription
+  type: subscription
+  description: >-
+    Production access to the Serif Health pricing APIs, scalable up to millions
+    of queries per month. Priced by query volume and data scope.
+  entries:
+  - label: API Queries
+    name: api_queries
+    type: usage
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Negotiated Rates API
+  - name: Rate Distributions API
+  - name: Find Care API
+  - name: Provider Directory API
+  - name: Analytics Portal
+- id: serif-health-data-delivery
+  name: Data Delivery & Extracts
+  type: subscription
+  description: >-
+    Custom data pulls and extracts for specific EINs, NPIs, taxonomy codes,
+    regions, or payers, delivered in common formats and optionally indexed back
+    into the API.
+  entries:
+  - label: Custom Data Pull
+    name: data_extract
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Datasets & Extracts
+  - name: Custom API Development
+- id: serif-health-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Enterprise agreements with custom data models, workflows, SLAs (e.g. 99.9%),
+    purpose-built APIs, and dedicated support. Contact Serif Health sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom API Development
+  - name: Dedicated SLAs
+  - name: MCP Server Access
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,77 @@
+aid: serif-health
+name: Serif Health
+review:
+  question: Does Serif Health expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    Per API Evangelist scope, HTTP Server-Sent Events (SSE) is in-scope for
+    AsyncAPI modeling. Serif Health's pricing API exposes only synchronous
+    request/response REST (HTTPS GET) endpoints; no SSE stream and no WebSocket
+    surface are documented, so no AsyncAPI document was created.
+findings:
+  summary: |
+    Serif Health does not publish a documented public WebSocket API. Its
+    price-transparency Pricing API is a synchronous REST (HTTPS) service under
+    https://pricing-api.serifhealth.com, authenticated with an API key passed as
+    a Bearer token in the Authorization header. The two publicly documented
+    endpoints are GET /v1/rates/code/{code} and GET /v1/distributions/code/{code}.
+    Additional products (Find Care API, Provider Directory API, datasets/extracts,
+    payer inventory, and MCP servers) are marketed but their request/response
+    contracts are not publicly documented. No realtime, streaming, SSE, or
+    WebSocket (ws:// or wss://) endpoint is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://pricing-api.serifhealth.com
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events streaming endpoint is documented.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Serif Health's API materials as of the review date.
+  endpointsConfirmedRest:
+    - GET https://pricing-api.serifhealth.com/v1/rates/code/{code}
+    - GET https://pricing-api.serifhealth.com/v1/distributions/code/{code}
+  endpointsMarketedUndocumented:
+    - Find Care API (provider search by procedure, geography, payer network)
+    - Provider Directory API (in/out-of-network status, NPI/EIN crosswalk)
+    - Datasets & Extracts (custom data pulls)
+    - Payer Inventory (live public payer coverage / scoring)
+    - MCP servers (remote, OAuth 2.1 / API-key authenticated) for LLM clients
+  authentication:
+    type: api_key
+    transport: Authorization Bearer header
+    note: Production API keys require a subscription; test keys available on request.
+sources:
+  - url: https://docs.serifhealth.com
+    type: Documentation
+    note: Redirects to app.serifhealth.com/docs (Price Intelligence Dashboard); developer docs portal.
+  - url: https://pricing-api.serifhealth.com/docs/
+    type: APIReference
+    note: API reference for the pricing API (rates and distributions endpoints).
+  - url: https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+    type: Documentation
+    note: Documents base URL, GET /v1/rates/code/{code} and GET /v1/distributions/code/{code} with example curl and JSON responses.
+  - url: https://www.serifhealth.com/platform/products/apis
+    type: Documentation
+    note: Lists Neuron (flagship pricing), Find Care, and Provider Directory APIs plus custom development and data delivery.
+  - url: https://www.serifhealth.com/blog/scaling-mcp-to-production
+    type: Documentation
+    note: Describes remotely hosted MCP servers fronting the APIs; HTTP MCP uses OAuth 2.1 while APIs use API keys in the Authorization header.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket or SSE protocol surface exists; the API is synchronous REST
+    only. apis.yml catalogs the documented REST endpoints plus marketed
+    products, with OpenAPI modeling only the two publicly documented endpoints
+    to avoid fabricating undocumented contracts.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

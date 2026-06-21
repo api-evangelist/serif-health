@@ -1,0 +1,52 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Serif Health
+providerId: serif-health
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Healthcare
+- Price Transparency
+- Negotiated Rates
+- Payer
+- Data
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Serif Health's pricing API is described publicly as fast and scalable up to
+  millions of queries per month, with query volume tied to the customer's
+  subscription. Specific published per-account or per-endpoint rate-limit values
+  (RPM/RPD/quota) are not documented publicly and are governed by the customer's
+  contract. Specific values are not reconciled in this artifact.
+notes: >-
+  Confirm concrete rate-limit and quota values, throttling response codes, and
+  Retry-After behavior directly with Serif Health on reconciliation; limits are
+  tied to subscription tier and contract.
+sources:
+- https://www.serifhealth.com/platform/products/apis
+- https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+- https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency
+responseCodes:
+  throttled: 429
+limits:
+- name: Monthly Query Volume
+  scope: account
+  metric: requests
+  limit: see subscription / contract
+  notes: Public materials cite scalability up to millions of queries per month; per-account ceiling is contract-defined.
+- name: Requests Per Minute (RPM)
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: Not publicly documented; governed by subscription tier.
+policies:
+- name: Subscription-Based Limits
+  description: Query volume and throughput are tied to the customer's subscription / contract tier.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on HTTP 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

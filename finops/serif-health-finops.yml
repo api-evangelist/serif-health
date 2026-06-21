@@ -1,0 +1,90 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Serif Health
+providerId: serif-health
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Healthcare
+- Price Transparency
+- Negotiated Rates
+- Payer
+- Data
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Serif Health spend. Serif Health bills through sales-led
+  subscriptions for its price-transparency data products - the pricing API
+  (negotiated rates and distributions), Find Care and Provider Directory APIs,
+  the analytics portal, and custom data delivery / extracts. Spend is driven by
+  API query volume and the scope of data licensed (EINs, NPIs, taxonomy codes,
+  regions, payers). Public dollar amounts are not listed; cost meters below are
+  modeled from documented usage dimensions and are not reconciled.
+notes: >-
+  Pricing is not publicly published; verify subscription fees, query allowances,
+  and overage terms against the Serif Health contract during reconciliation.
+sources:
+- https://www.serifhealth.com/platform/products/apis
+- https://www.serifhealth.com/platform/products/data-delivery
+- https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Serif Health
+serviceCategory: Healthcare Data and Analytics
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Annual
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Serif Health Pricing API
+  ServiceCategory: Healthcare Data and Analytics
+  ProviderName: Serif Health
+  PublisherName: Serif Health
+  InvoiceIssuerName: Serif Health
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription-Based
+meters:
+- name: api_queries
+  description: API queries against the rates, distributions, find-care, and provider-directory endpoints.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - api
+- name: data_extracts
+  description: Custom data pulls / extracts licensed for specific EINs, NPIs, taxonomy codes, regions, or payers.
+  unit: extracts
+  aggregation: sum
+  dimensions:
+  - account
+  - scope
+- name: subscription_fee
+  description: Recurring subscription fee for API and analytics-portal access.
+  unit: contract
+  aggregation: sum
+  dimensions:
+  - account
+principles:
+- name: Visibility
+  description: Track API query volume per key/workload against the contracted query allowance.
+- name: Allocation
+  description: Tag API keys per team / product and map data extracts to internal cost centers.
+- name: Optimization
+  description: Scope queries by region, payer, and code to the data actually needed; prefer distributions over high-volume per-rate pulls where a benchmark suffices.
+- name: Accountability
+  description: Review monthly query burn and extract spend against the subscription budget and renewal terms.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

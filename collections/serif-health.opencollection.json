@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Serif Health Pricing API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get negotiated rates for a procedure code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pricing-api.serifhealth.com/v1/rates/code/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "27445",
+                "type": "path",
+                "description": "The procedure code (CPT or DRG) to look up."
+              },
+              {
+                "name": "region",
+                "value": "PA",
+                "type": "query",
+                "description": "US state abbreviation to scope rates to."
+              },
+              {
+                "name": "tier",
+                "value": "professional",
+                "type": "query",
+                "description": "Service tier, e.g. professional or facility."
+              },
+              {
+                "name": "site",
+                "value": "nonfac",
+                "type": "query",
+                "description": "Site of service, e.g. nonfac or fac."
+              },
+              {
+                "name": "payer",
+                "value": "bcbs",
+                "type": "query",
+                "description": "Payer name to filter to."
+              }
+            ]
+          },
+          "docs": "Returns payer-negotiated reimbursement rates for a single procedure code (CPT/DRG), optionally filtered by region, tier, site of service, and payer."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Distributions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get rate distribution for a procedure code",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pricing-api.serifhealth.com/v1/distributions/code/:code",
+            "params": [
+              {
+                "name": "code",
+                "value": "90837",
+                "type": "path",
+                "description": "The procedure code (CPT or DRG) to look up."
+              },
+              {
+                "name": "region",
+                "value": "TX",
+                "type": "query",
+                "description": "US state abbreviation to scope the distribution to."
+              },
+              {
+                "name": "tier",
+                "value": "professional",
+                "type": "query",
+                "description": "Service tier, e.g. professional or facility."
+              },
+              {
+                "name": "site",
+                "value": "nonfac",
+                "type": "query",
+                "description": "Site of service, e.g. nonfac or fac."
+              },
+              {
+                "name": "payer",
+                "value": "bcbs",
+                "type": "query",
+                "description": "Payer name to filter to."
+              },
+              {
+                "name": "weighting",
+                "value": "ein",
+                "type": "query",
+                "description": "Weighting method for the distribution, by ein or npi."
+              }
+            ]
+          },
+          "docs": "Returns the percentile distribution (5th-95th) of negotiated rates for a single procedure code, filtered by region, tier, site of service, payer, and weighting method."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
