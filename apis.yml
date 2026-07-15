@@ -129,6 +129,8 @@ apis:
     updated monthly, exposing data coverage and freshness across payer machine-readable
     files.
 common:
+- type: AgenticAccess
+  url: agentic-access/serif-health-agentic-access.yml
 - type: DomainSecurity
   url: security/serif-health-domain-security.yml
 - type: Authentication
