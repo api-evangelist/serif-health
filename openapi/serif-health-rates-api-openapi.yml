@@ -1,0 +1,117 @@
+openapi: 3.0.1
+info:
+  title: Serif Health Pricing Distributions Rates API
+  description: 'REST API for Serif Health''s normalized healthcare price-transparency data. Query payer-negotiated reimbursement rates and percentile rate distributions for an individual procedure code (CPT/DRG), filtered by region, tier, site of service, payer, and weighting. Rates are derived from federally mandated machine-readable files (MRFs) published by payers and hospitals.
+
+    Only the rates and distributions endpoints are documented here from public Serif Health materials. Find Care, Provider Directory, and dataset/extract capabilities are offered but their request/response contracts are not publicly documented and are intentionally not fabricated here.'
+  termsOfService: https://www.serifhealth.com/legal/terms
+  contact:
+    name: Serif Health
+    email: hello@serifhealth.com
+    url: https://www.serifhealth.com
+  version: '1.0'
+servers:
+- url: https://pricing-api.serifhealth.com
+  description: Serif Health Pricing API
+security:
+- ApiKeyAuth: []
+tags:
+- name: Rates
+paths:
+  /v1/rates/code/{code}:
+    get:
+      operationId: getRatesByCode
+      tags:
+      - Rates
+      summary: Get negotiated rates for a procedure code
+      description: Returns payer-negotiated reimbursement rates for a single procedure code (CPT/DRG), optionally filtered by region, tier, site of service, and payer.
+      parameters:
+      - name: code
+        in: path
+        required: true
+        description: The procedure code (CPT or DRG) to look up.
+        schema:
+          type: string
+        example: '27445'
+      - name: region
+        in: query
+        required: false
+        description: US state abbreviation to scope rates to (e.g. PA).
+        schema:
+          type: string
+        example: PA
+      - name: tier
+        in: query
+        required: false
+        description: Service tier, e.g. professional or facility.
+        schema:
+          type: string
+        example: professional
+      - name: site
+        in: query
+        required: false
+        description: Site of service, e.g. nonfac (non-facility) or fac (facility).
+        schema:
+          type: string
+        example: nonfac
+      - name: payer
+        in: query
+        required: false
+        description: Payer name to filter to (e.g. bcbs, cigna, uhc).
+        schema:
+          type: string
+        example: bcbs
+      responses:
+        '200':
+          description: Negotiated rates for the requested code.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RatesResponse'
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: No rates found for the requested code/filters.
+        '429':
+          description: Rate limit exceeded.
+components:
+  schemas:
+    RatesResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The procedure code that was queried.
+          example: '27445'
+        count:
+          type: integer
+          description: Total number of matching rate records.
+          example: 3178
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateEntry'
+    RateEntry:
+      type: object
+      properties:
+        payer:
+          type: string
+          description: Payer name.
+          example: Cigna
+        rate:
+          type: number
+          description: Negotiated rate amount in USD.
+          example: 1621
+        npi_count:
+          type: integer
+          description: Number of distinct NPIs contributing to this rate.
+          example: 3509
+        ein_count:
+          type: integer
+          description: Number of distinct EINs contributing to this rate.
+          example: 2
+  securitySchemes:
+    ApiKeyAuth:
+      type: http
+      scheme: bearer
+      description: 'Serif Health API key passed as a Bearer token in the Authorization header (Authorization: Bearer <API_KEY>). API keys are issued by Serif Health; contact hello@serifhealth.com for access.'
