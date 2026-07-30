@@ -7,7 +7,20 @@ description: Serif Health turns federal hospital and payer price-transparency di
   REST APIs let teams query negotiated reimbursement rates and rate distributions by
   CPT/DRG code, payer, provider, and geography, search for in-network providers, and
   pull custom datasets and extracts.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/serif-health.png
 tags:
 - Healthcare
 - Price Transparency
@@ -18,86 +31,6 @@ created: '2026-06-21'
 modified: '2026-06-21'
 specificationVersion: '0.19'
 apis:
-- aid: serif-health:negotiated-rates-api
-  name: Serif Health Negotiated Rates API
-  tags:
-  - Negotiated Rates
-  - Pricing
-  - Price Transparency
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.serifhealth.com/platform/products/apis
-  baseURL: https://pricing-api.serifhealth.com
-  properties:
-  - url: https://docs.serifhealth.com
-    type: Documentation
-  - url: https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
-    type: APIReference
-  - url: openapi/serif-health-openapi.yml
-    type: OpenAPI
-  - url: collections/serif-health.postman_collection.json
-    type: PostmanCollection
-  - url: collections/serif-health.opencollection.json
-    type: OpenCollection
-  description: Query payer-negotiated reimbursement rates for an individual procedure
-    code (CPT/DRG), filtered by region, tier, site of service, and payer. Returns
-    per-payer rates derived from machine-readable files (MRFs).
-- aid: serif-health:rate-search-api
-  name: Serif Health Rate Distributions API
-  tags:
-  - Rate Search
-  - Distributions
-  - Benchmarks
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.serifhealth.com/platform/products/apis
-  baseURL: https://pricing-api.serifhealth.com
-  properties:
-  - url: https://docs.serifhealth.com
-    type: Documentation
-  - url: https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
-    type: APIReference
-  - url: openapi/serif-health-openapi.yml
-    type: OpenAPI
-  - url: collections/serif-health.postman_collection.json
-    type: PostmanCollection
-  - url: collections/serif-health.opencollection.json
-    type: OpenCollection
-  description: Return percentile rate distributions (5th-95th) for a procedure code,
-    filtered by region, tier, site, payer, and weighting (NPI or EIN) for benchmarking
-    against the market.
-- aid: serif-health:find-care-api
-  name: Serif Health Find Care API
-  tags:
-  - Find Care
-  - Provider Search
-  - Care Navigation
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.serifhealth.com/platform/products/apis
-  baseURL: https://pricing-api.serifhealth.com
-  properties:
-  - url: https://docs.serifhealth.com
-    type: Documentation
-  - url: https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency
-    type: Documentation
-  - url: openapi/serif-health-openapi.yml
-    type: OpenAPI
-  description: Find the right provider by procedure, geography, and payer network -
-    surfacing cost-aware, in-network provider options to power care-navigation tools.
-- aid: serif-health:provider-directory-api
-  name: Serif Health Provider Directory API
-  tags:
-  - Provider Directory
-  - Network Status
-  - NPI EIN Crosswalk
-  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.serifhealth.com/platform/products/apis
-  baseURL: https://pricing-api.serifhealth.com
-  properties:
-  - url: https://docs.serifhealth.com
-    type: Documentation
-  - url: openapi/serif-health-openapi.yml
-    type: OpenAPI
-  description: Determine in- vs out-of-network status across payers and perform NPI/EIN
-    relationship crosswalks to understand network structure and decode MRF postings.
 - aid: serif-health:datasets-extracts-api
   name: Serif Health Datasets & Extracts
   tags:
@@ -110,9 +43,9 @@ apis:
   properties:
   - url: https://www.serifhealth.com/platform/products/data-delivery
     type: Documentation
-  description: Custom data pulls and extracts for specific EINs, NPIs, or taxonomy
-    codes, delivered in common formats and optionally indexed back into the API by
-    request.
+  description: >-
+    Custom data pulls and extracts for specific EINs, NPIs, or taxonomy codes, delivered in common formats
+    and optionally indexed back into the API by request.
 - aid: serif-health:payer-inventory-api
   name: Serif Health Payer Inventory
   tags:
@@ -120,14 +53,60 @@ apis:
   - Coverage
   - Benchmarks
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-  humanURL: https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
+  humanURL: >-
+    https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
   baseURL: https://www.serifhealth.com
   properties:
-  - url: https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
+  - url: >-
+      https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
     type: Documentation
-  description: Live public inventory of 200+ payers with network-quality scoring,
-    updated monthly, exposing data coverage and freshness across payer machine-readable
-    files.
+  description: >-
+    Live public inventory of 200+ payers with network-quality scoring, updated monthly, exposing data
+    coverage and freshness across payer machine-readable files.
+- aid: serif-health:serif-health-distributions-api
+  name: Serif Health Distributions API
+  description: The Distributions API from Serif Health — 1 operation(s) for distributions.
+  humanURL: https://www.serifhealth.com/platform/products/apis
+  baseURL: https://pricing-api.serifhealth.com
+  tags:
+  - Distributions
+  properties:
+  - type: OpenAPI
+    url: openapi/serif-health-distributions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.serifhealth.com
+  - type: APIReference
+    url: >-
+      https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+  - type: PostmanCollection
+    url: collections/serif-health.postman_collection.json
+  - type: OpenCollection
+    url: collections/serif-health.opencollection.json
+  - type: Documentation
+    url: >-
+      https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency
+- aid: serif-health:serif-health-rates-api
+  name: Serif Health Rates API
+  description: The Rates API from Serif Health — 1 operation(s) for rates.
+  humanURL: https://www.serifhealth.com/platform/products/apis
+  baseURL: https://pricing-api.serifhealth.com
+  tags:
+  - Rates
+  properties:
+  - type: OpenAPI
+    url: openapi/serif-health-rates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.serifhealth.com
+  - type: APIReference
+    url: >-
+      https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api
+  - type: PostmanCollection
+    url: collections/serif-health.postman_collection.json
+  - type: OpenCollection
+    url: collections/serif-health.opencollection.json
+  - type: Documentation
+    url: >-
+      https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency
 common:
 - type: AgenticAccess
   url: agentic-access/serif-health-agentic-access.yml
