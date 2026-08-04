@@ -1,0 +1,16 @@
+{
+  "provider": "serif-health",
+  "sources": [
+    "serif-health-distributions-api-openapi.yml",
+    "serif-health-rates-api-openapi.yml"
+  ],
+  "outputs": [
+    "serif-health-distributions-api-openapi.yml",
+    "serif-health-rates-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
