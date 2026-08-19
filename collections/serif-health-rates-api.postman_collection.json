@@ -1,0 +1,384 @@
+{
+  "item": [
+    {
+      "id": "4cd5d10a-ef49-4f32-9f5e-c133a780c830",
+      "name": "Rates",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8762774a-31ed-4730-8898-4733c29e6fdf",
+          "name": "Get negotiated rates for a procedure code",
+          "request": {
+            "name": "Get negotiated rates for a procedure code",
+            "description": {
+              "content": "Returns payer-negotiated reimbursement rates for a single procedure code (CPT/DRG), optionally filtered by region, tier, site of service, and payer.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "rates",
+                "code",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "US state abbreviation to scope rates to (e.g. PA)."
+                },
+                {
+                  "disabled": false,
+                  "key": "tier",
+                  "value": "<string>",
+                  "description": "Service tier, e.g. professional or facility."
+                },
+                {
+                  "disabled": false,
+                  "key": "site",
+                  "value": "<string>",
+                  "description": "Site of service, e.g. nonfac (non-facility) or fac (facility)."
+                },
+                {
+                  "disabled": false,
+                  "key": "payer",
+                  "value": "<string>",
+                  "description": "Payer name to filter to (e.g. bcbs, cigna, uhc)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) The procedure code (CPT or DRG) to look up."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e62982dc-ea50-4b97-880b-656521297211",
+              "name": "Negotiated rates for the requested code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rates",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "PA"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"27445\",\n  \"count\": 3178,\n  \"rates\": [\n    {\n      \"payer\": \"Cigna\",\n      \"rate\": 1621,\n      \"npi_count\": 3509,\n      \"ein_count\": 2\n    },\n    {\n      \"payer\": \"Cigna\",\n      \"rate\": 1621,\n      \"npi_count\": 3509,\n      \"ein_count\": 2\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed6e6007-efc3-4849-aa3a-468d01947ae7",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rates",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "PA"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6b22080c-a15a-4ebe-81ed-0572e58865e7",
+              "name": "No rates found for the requested code/filters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rates",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "PA"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b14e667-7700-4f99-9b83-7ad8950810b5",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "rates",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "PA"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pricing-api.serifhealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ddb6476b-48d0-407a-8a84-39033b7deefb",
+    "name": "Serif Health Pricing Distributions Rates API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Serif Health's normalized healthcare price-transparency data. Query payer-negotiated reimbursement rates and percentile rate distributions for an individual procedure code (CPT/DRG), filtered by region, tier, site of service, payer, and weighting. Rates are derived from federally mandated machine-readable files (MRFs) published by payers and hospitals.\nOnly the rates and distributions endpoints are documented here from public Serif Health materials. Find Care, Provider Directory, and dataset/extract capabilities are offered but their request/response contracts are not publicly documented and are intentionally not fabricated here.\n\nContact Support:\n Name: Serif Health\n Email: hello@serifhealth.com",
+      "type": "text/plain"
+    }
+  }
+}

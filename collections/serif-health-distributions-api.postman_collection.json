@@ -1,0 +1,406 @@
+{
+  "item": [
+    {
+      "id": "5d37c841-096a-4482-87d9-6eda08c2dcfa",
+      "name": "Distributions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9c8c440a-fd61-40bb-9159-693ee7177e8f",
+          "name": "Get rate distribution for a procedure code",
+          "request": {
+            "name": "Get rate distribution for a procedure code",
+            "description": {
+              "content": "Returns the percentile distribution (5th-95th) of negotiated rates for a single procedure code, filtered by region, tier, site of service, payer, and weighting method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v1",
+                "distributions",
+                "code",
+                ":code"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "<string>",
+                  "description": "US state abbreviation to scope the distribution to (e.g. TX)."
+                },
+                {
+                  "disabled": false,
+                  "key": "tier",
+                  "value": "<string>",
+                  "description": "Service tier, e.g. professional or facility."
+                },
+                {
+                  "disabled": false,
+                  "key": "site",
+                  "value": "<string>",
+                  "description": "Site of service, e.g. nonfac (non-facility) or fac (facility)."
+                },
+                {
+                  "disabled": false,
+                  "key": "payer",
+                  "value": "<string>",
+                  "description": "Payer name to filter to (e.g. bcbs, cigna, uhc)."
+                },
+                {
+                  "disabled": false,
+                  "key": "weighting",
+                  "value": "<string>",
+                  "description": "Weighting method for the distribution, by ein or npi."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "code",
+                  "description": "(Required) The procedure code (CPT or DRG) to look up."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ded8f072-1c8f-48bb-9852-23c0fec42809",
+              "name": "Percentile rate distribution for the requested code.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "distributions",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "TX"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    },
+                    {
+                      "key": "weighting",
+                      "value": "ein"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": \"90837\",\n  \"npi_count\": 1128940,\n  \"ein_count\": 270301,\n  \"weighting\": \"ein\",\n  \"distribution\": {\n    \"5th\": 92.04,\n    \"10th\": 92.04,\n    \"25th\": 103.06,\n    \"50th\": 126.69,\n    \"75th\": 133.86,\n    \"90th\": 162.07,\n    \"95th\": 179.27\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f0921924-edbb-4dc6-b327-456af18ff5c8",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "distributions",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "TX"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    },
+                    {
+                      "key": "weighting",
+                      "value": "ein"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4771aef-36d5-4af7-b7f6-dd403ea105bd",
+              "name": "No distribution found for the requested code/filters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "distributions",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "TX"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    },
+                    {
+                      "key": "weighting",
+                      "value": "ein"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ae436dca-940b-4d92-b583-2141e0b0d461",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v1",
+                    "distributions",
+                    "code",
+                    ":code"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "region",
+                      "value": "TX"
+                    },
+                    {
+                      "key": "tier",
+                      "value": "professional"
+                    },
+                    {
+                      "key": "site",
+                      "value": "nonfac"
+                    },
+                    {
+                      "key": "payer",
+                      "value": "bcbs"
+                    },
+                    {
+                      "key": "weighting",
+                      "value": "ein"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "code",
+                      "description": "(Required) The procedure code (CPT or DRG) to look up."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pricing-api.serifhealth.com",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "cec26214-91dd-49be-a0e6-ee9c03b17ac8",
+    "name": "Serif Health Pricing Distributions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for Serif Health's normalized healthcare price-transparency data. Query payer-negotiated reimbursement rates and percentile rate distributions for an individual procedure code (CPT/DRG), filtered by region, tier, site of service, payer, and weighting. Rates are derived from federally mandated machine-readable files (MRFs) published by payers and hospitals.\nOnly the rates and distributions endpoints are documented here from public Serif Health materials. Find Care, Provider Directory, and dataset/extract capabilities are offered but their request/response contracts are not publicly documented and are intentionally not fabricated here.\n\nContact Support:\n Name: Serif Health\n Email: hello@serifhealth.com",
+      "type": "text/plain"
+    }
+  }
+}
