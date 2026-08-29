@@ -120,6 +120,9 @@ apis:
     url: >-
       https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency
 common:
+- type: CapabilityMap
+  url: capabilities/serif-health-capability-edges.yml
+  name: Serif Health Business Capability Map
 - type: AgenticAccess
   url: agentic-access/serif-health-agentic-access.yml
 - type: DomainSecurity
