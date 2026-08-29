@@ -19,16 +19,16 @@ edges:
   capability_id_l1: BC-2870
   capability_name: Payer Contract Management
   confidence: 0.72
-  evidence: GET /v1/rates/code/{code}  Get negotiated rates for a procedure code
-  reason: Negotiated reimbursement rates by payer/provider/geography directly support payer contract modelling
-    and negotiation support within revenue cycle management.
+  evidence: GET /v1/rates/code/{code} Get negotiated rates for a procedure code
+  reason: Exposes payer-negotiated reimbursement rates by payer/provider/geography, the input to contract
+    modelling, negotiation support and variance analysis against payer contracts.
 - tag: Distributions
   spec_file: serif-health-distributions-api-openapi.yml
   capability_id: BC-2870.70
   capability_id_l1: BC-2870
   capability_name: Payer Contract Management
   confidence: 0.7
-  evidence: Query payer-negotiated reimbursement rates and percentile rate distributions for an individual
-    procedure code (CPT/DRG), filtered by region, tier, site of service, payer
-  reason: Percentile distributions of payer-negotiated rates are used for payer contract modelling, negotiation
-    support and variance analysis by providers. Analytical data feed, hence moderate confidence.
+  evidence: GET /v1/distributions/code/{code} Get rate distribution for a procedure code ... payer-negotiated
+    reimbursement rates and percentile rate distributions
+  reason: Percentile distributions of payer-negotiated rates per CPT/DRG are used for rate benchmarking,
+    contract modelling and negotiation support — payer contract management within provider revenue cycle.
