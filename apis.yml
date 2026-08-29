@@ -7,6 +7,18 @@ description: Serif Health turns federal hospital and payer price-transparency di
   REST APIs let teams query negotiated reimbursement rates and rate distributions by
   CPT/DRG code, payer, provider, and geography, search for in-network providers, and
   pull custom datasets and extracts.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
