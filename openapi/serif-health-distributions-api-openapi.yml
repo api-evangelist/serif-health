@@ -1,9 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Serif Health Pricing Distributions API
-  description: 'REST API for Serif Health''s normalized healthcare price-transparency data. Query payer-negotiated reimbursement rates and percentile rate distributions for an individual procedure code (CPT/DRG), filtered by region, tier, site of service, payer, and weighting. Rates are derived from federally mandated machine-readable files (MRFs) published by payers and hospitals.
-
-    Only the rates and distributions endpoints are documented here from public Serif Health materials. Find Care, Provider Directory, and dataset/extract capabilities are offered but their request/response contracts are not publicly documented and are intentionally not fabricated here.'
+  description: REST API for Serif Health's normalized healthcare price-transparency data.
   termsOfService: https://www.serifhealth.com/legal/terms
   contact:
     name: Serif Health
@@ -86,6 +84,27 @@ paths:
           description: Rate limit exceeded.
 components:
   schemas:
+    DistributionResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The procedure code that was queried.
+          example: '90837'
+        npi_count:
+          type: integer
+          description: Number of distinct NPIs in the distribution.
+          example: 1128940
+        ein_count:
+          type: integer
+          description: Number of distinct EINs in the distribution.
+          example: 270301
+        weighting:
+          type: string
+          description: Weighting method applied to the distribution.
+          example: ein
+        distribution:
+          $ref: '#/components/schemas/Percentiles'
     Percentiles:
       type: object
       description: Negotiated-rate percentiles in USD.
@@ -111,27 +130,6 @@ components:
         95th:
           type: number
           example: 179.27
-    DistributionResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: The procedure code that was queried.
-          example: '90837'
-        npi_count:
-          type: integer
-          description: Number of distinct NPIs in the distribution.
-          example: 1128940
-        ein_count:
-          type: integer
-          description: Number of distinct EINs in the distribution.
-          example: 270301
-        weighting:
-          type: string
-          description: Weighting method applied to the distribution.
-          example: ein
-        distribution:
-          $ref: '#/components/schemas/Percentiles'
   securitySchemes:
     ApiKeyAuth:
       type: http

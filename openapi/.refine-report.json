@@ -1,8 +1,7 @@
 {
   "provider": "serif-health",
   "sources": [
-    "serif-health-distributions-api-openapi.yml",
-    "serif-health-rates-api-openapi.yml"
+    "_original/serif-health-openapi.yml"
   ],
   "outputs": [
     "serif-health-distributions-api-openapi.yml",
@@ -11,6 +10,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "serif-health-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "serif-health-openapi.yml: declared missing tag: Distributions",
+    "serif-health-openapi.yml: declared missing tag: Rates",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "serif-health-distributions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "serif-health-rates-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
