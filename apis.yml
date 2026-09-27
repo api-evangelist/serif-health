@@ -74,7 +74,6 @@ apis:
   image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
   humanURL: >-
     https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
-  baseURL: https://www.serifhealth.com
   properties:
   - url: >-
       https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health
