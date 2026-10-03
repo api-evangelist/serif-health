@@ -74,6 +74,21 @@ paths:
           description: Rate limit exceeded.
 components:
   schemas:
+    RatesResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The procedure code that was queried.
+          example: '27445'
+        count:
+          type: integer
+          description: Total number of matching rate records.
+          example: 3178
+        rates:
+          type: array
+          items:
+            $ref: '#/components/schemas/RateEntry'
     RateEntry:
       type: object
       properties:
@@ -93,21 +108,6 @@ components:
           type: integer
           description: Number of distinct EINs contributing to this rate.
           example: 2
-    RatesResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: The procedure code that was queried.
-          example: '27445'
-        count:
-          type: integer
-          description: Total number of matching rate records.
-          example: 3178
-        rates:
-          type: array
-          items:
-            $ref: '#/components/schemas/RateEntry'
   securitySchemes:
     ApiKeyAuth:
       type: http
