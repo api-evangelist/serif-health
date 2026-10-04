@@ -84,27 +84,6 @@ paths:
           description: Rate limit exceeded.
 components:
   schemas:
-    DistributionResponse:
-      type: object
-      properties:
-        code:
-          type: string
-          description: The procedure code that was queried.
-          example: '90837'
-        npi_count:
-          type: integer
-          description: Number of distinct NPIs in the distribution.
-          example: 1128940
-        ein_count:
-          type: integer
-          description: Number of distinct EINs in the distribution.
-          example: 270301
-        weighting:
-          type: string
-          description: Weighting method applied to the distribution.
-          example: ein
-        distribution:
-          $ref: '#/components/schemas/Percentiles'
     Percentiles:
       type: object
       description: Negotiated-rate percentiles in USD.
@@ -130,6 +109,27 @@ components:
         95th:
           type: number
           example: 179.27
+    DistributionResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          description: The procedure code that was queried.
+          example: '90837'
+        npi_count:
+          type: integer
+          description: Number of distinct NPIs in the distribution.
+          example: 1128940
+        ein_count:
+          type: integer
+          description: Number of distinct EINs in the distribution.
+          example: 270301
+        weighting:
+          type: string
+          description: Weighting method applied to the distribution.
+          example: ein
+        distribution:
+          $ref: '#/components/schemas/Percentiles'
   securitySchemes:
     ApiKeyAuth:
       type: http
