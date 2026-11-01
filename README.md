@@ -1,4 +1,4 @@
-# Serif Health (serif-health)
+# Serif Health
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,147 +66,128 @@
 
 Serif Health turns federal hospital and payer price-transparency disclosures (machine-readable files) into normalized, decision-ready negotiated-rate data. Its REST APIs let teams query negotiated reimbursement rates and rate distributions by CPT/DRG code, payer, provider, and geography, search for in-network providers, and pull custom datasets and extracts.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/serif-health/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/serif-health/refs/heads/main/apis.yml)
+**Areas:** Healthcare · Price Transparency · Negotiated Rates · Payers · Data
 
-## Tags
+## Serif Health on APIs.io
 
-- Healthcare
-- Price Transparency
-- Negotiated Rates
-- Payer
-- Data
+Everything profiled for Serif Health is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/serif-health/](https://apis.io/providers/serif-health/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Serif Health Datasets & Extracts](https://apis.io/apis/serif-health/datasets-extracts-api/) — Custom data pulls and extracts for specific EINs, NPIs, or taxonomy codes, delivered in common formats and optionally indexed back into the API by request.
+- [Serif Health Payer Inventory](https://apis.io/apis/serif-health/payer-inventory-api/) — Live public inventory of 200+ payers with network-quality scoring, updated monthly, exposing data coverage and freshness across payer machine-readable files.
+- [Serif Health Distributions API](https://apis.io/apis/serif-health/serif-health-distributions-api/) — The Distributions API from Serif Health — 1 operation(s) for distributions.
+- [Serif Health Rates API](https://apis.io/apis/serif-health/serif-health-rates-api/) — The Rates API from Serif Health — 1 operation(s) for rates.
 
-## APIs
+### Published properties
 
-### Serif Health Negotiated Rates API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Query payer-negotiated reimbursement rates for an individual procedure code (CPT/DRG), filtered by region, tier, site of service, and payer. Returns per-payer rates derived from machine-readable files (MRFs).
+#### MCP servers (1)
 
-- **Human URL:** [https://www.serifhealth.com/platform/products/apis](https://www.serifhealth.com/platform/products/apis)
-- **Base URL:** `https://pricing-api.serifhealth.com`
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags
+- [serif-health](https://apis.io/servers/serif-health/serif-health/)
 
-- Negotiated Rates
-- Pricing
-- Price Transparency
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.serifhealth.com)
-- [API Reference](https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api)
-- [OpenAPI](openapi/serif-health-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/serif-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/serif-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Serif Health Agentic Access](https://apis.io/agentic-access/serif-health/serif-health-agentic-access/)
 
-### Serif Health Rate Distributions API
+#### Collections (3)
 
-Return percentile rate distributions (5th-95th) for a procedure code, filtered by region, tier, site, payer, and weighting (NPI or EIN) for benchmarking against the market.
+Postman and Open Collection request collections.
 
-- **Human URL:** [https://www.serifhealth.com/platform/products/apis](https://www.serifhealth.com/platform/products/apis)
-- **Base URL:** `https://pricing-api.serifhealth.com`
+- [Serif Health Pricing API](https://apis.io/collections/serif-health/open-serif-health/)
+- [Serif Health Pricing Distributions API](https://apis.io/collections/serif-health/open-serif-health-distributions-api/)
+- [Serif Health Pricing Distributions Rates API](https://apis.io/collections/serif-health/open-serif-health-rates-api/)
 
-#### Tags
+#### Security (2)
 
-- Rate Search
-- Distributions
-- Benchmarks
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Properties
+- [Serif Health Authentication](https://apis.io/security/serif-health/serif-health-authentication/)
+- [Serif Health Domain Security](https://apis.io/security/serif-health/serif-health-domain-security/)
 
-- [Documentation](https://docs.serifhealth.com)
-- [API Reference](https://www.serifhealth.com/blog/announcing-our-payer-price-transparency-analytics-portal-api)
-- [OpenAPI](openapi/serif-health-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/serif-health.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/serif-health.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Plans and pricing (1)
 
-### Serif Health Find Care API
+Published plans, tiers and prices.
 
-Find the right provider by procedure, geography, and payer network - surfacing cost-aware, in-network provider options to power care-navigation tools.
+- [Serif Health Plans Pricing](https://apis.io/plans/serif-health/serif-health-plans-pricing/)
 
-- **Human URL:** [https://www.serifhealth.com/platform/products/apis](https://www.serifhealth.com/platform/products/apis)
-- **Base URL:** `https://pricing-api.serifhealth.com`
+#### Rate limits (1)
 
-#### Tags
+Published request limits.
 
-- Find Care
-- Provider Search
-- Care Navigation
+- [Serif Health Rate Limits](https://apis.io/rate-limits/serif-health/serif-health-rate-limits/)
 
-#### Properties
+#### FinOps (1)
 
-- [Documentation](https://docs.serifhealth.com)
-- [Documentation](https://www.serifhealth.com/blog/announcing-the-serif-health-find-care-api-seamless-provider-search-via-price-transparency)
-- [OpenAPI](openapi/serif-health-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+What the API costs to run, by operation.
 
-### Serif Health Provider Directory API
+- [Serif Health Finops](https://apis.io/finops/serif-health/serif-health-finops/)
 
-Determine in- vs out-of-network status across payers and perform NPI/EIN relationship crosswalks to understand network structure and decode MRF postings.
+## Where to find this API
 
-- **Human URL:** [https://www.serifhealth.com/platform/products/apis](https://www.serifhealth.com/platform/products/apis)
-- **Base URL:** `https://pricing-api.serifhealth.com`
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Tags
-
-- Provider Directory
-- Network Status
-- NPI EIN Crosswalk
-
-#### Properties
-
-- [Documentation](https://docs.serifhealth.com)
-- [OpenAPI](openapi/serif-health-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-
-### Serif Health Datasets & Extracts
-
-Custom data pulls and extracts for specific EINs, NPIs, or taxonomy codes, delivered in common formats and optionally indexed back into the API by request.
-
-- **Human URL:** [https://www.serifhealth.com/platform/products/data-delivery](https://www.serifhealth.com/platform/products/data-delivery)
-- **Base URL:** `https://pricing-api.serifhealth.com`
-
-#### Tags
-
-- Datasets
-- Extracts
-- Data Delivery
-
-#### Properties
-
-- [Documentation](https://www.serifhealth.com/platform/products/data-delivery)
-
-### Serif Health Payer Inventory
-
-Live public inventory of 200+ payers with network-quality scoring, updated monthly, exposing data coverage and freshness across payer machine-readable files.
-
-- **Human URL:** [https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health](https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health)
-- **Base URL:** `https://www.serifhealth.com`
-
-#### Tags
-
-- Payer Inventory
-- Coverage
-- Benchmarks
-
-#### Properties
-
-- [Documentation](https://www.serifhealth.com/blog/announcing-our-live-payer-inventory-real-time-transparency-from-serif-health)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/serif-health)
-- [LinkedIn](https://www.linkedin.com/company/serif-health)
 - [Website](https://www.serifhealth.com)
 - [Documentation](https://docs.serifhealth.com)
-- [Plans](plans/serif-health-plans-pricing.yml)
-- [Rate Limits](rate-limits/serif-health-rate-limits.yml)
-- [Fin Ops](finops/serif-health-finops.yml)
+- [Blog](https://www.serifhealth.com/blog)
+- [GitHub](https://github.com/serif-health)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 25.1** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 60.0 |
+| Contract quality | 49.6 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 40.7** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | verified |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 9.4** — Health
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/serif-health/](https://apis.io/providers/serif-health/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Serif Health: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/serif-health/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
